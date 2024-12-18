@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KR_TP.MainPageOOP">
+    <ContentPage.Content>
+        
+        <VerticalStackLayout
+            Spacing="15">
+            
+            <HorizontalStackLayout Spacing="10">
+                
+                <VerticalStackLayout>
+                    <!-- Режим ввода -->
+                    <Label x:Name="header" Text="Выберите режим ввода:" />
+                        <RadioButton GroupName="EnterPoint" x:Name="ExampleRadioButton" CheckedChanged="RadioButton_OnCheckedChanged" IsChecked="True" Content="Контрольный пример" />
+                        <RadioButton GroupName="EnterPoint" x:Name="EnterYourselfRadioButton" CheckedChanged="RadioButton_OnCheckedChanged"  Content="Ручной ввод" />
+                        
+                        <!-- Задание точек -->
+                        <Grid Margin="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="1" Text="X"></Label>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Y"></Label>
+                            
+                            <Label Grid.Row="1" Grid.Column="0" Text="Точка b"></Label>
+                            <Label Grid.Row="2" Grid.Column="0" Text="Точка d"></Label>
+                            
+                            <Entry Grid.Row="1" Grid.Column="1" x:Name="b_x"></Entry> <Entry Grid.Row="1" Grid.Column="2" x:Name="b_y"></Entry>
+                            <Entry Grid.Row="2" Grid.Column="1" x:Name="d_x"></Entry > <Entry Grid.Row="2" Grid.Column="2" x:Name="d_y"></Entry>
+                        </Grid>
+                        
+                        <!-- Кнопки -->
+                        <Grid Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Вычислить" Clicked="ButtonEnter_OnClicked"></Button>
+                            <Button Grid.Column="1" Text="Очистить"></Button>
+                        </Grid>
+                        
+                        <!-- Информация о площади -->
+                        <Grid Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Площадь фигуры: "></Label>
+                            <Label x:Name="RealSquareFigure" Grid.Column="1" Text=""></Label>
+                        </Grid>
+                </VerticalStackLayout>
+                
+                <!-- Рисунок -->
+                <Image 
+                       Source="points.png"
+                    
+                       Aspect="AspectFit"
+                       SemanticProperties.Description="Рисунок точек задачи" />
+                
+            </HorizontalStackLayout>
+            
+            <!-- Таблица -->
+            <CollectionView Margin="20" ItemsSource="{Binding TableData}">
+                <CollectionView.Header>
+                    <Grid ColumnDefinitions="*,*,*,*,*" BackgroundColor="LightGray" Padding="10" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="№" Grid.Column="0" FontAttributes="Bold" Padding="10"/>
+                        <Label Text="N" Grid.Column="1" FontAttributes="Bold" Padding="10"/>
+                        <Label Text="Площадь" Grid.Column="2" FontAttributes="Bold" Padding="10"/>
+                        <Label Text="Погрешность, %" Grid.Column="3" FontAttributes="Bold" Padding="10"/>
+                        <Label Text="Время, мс" Grid.Column="4" FontAttributes="Bold" Padding="10"/>
+                    </Grid>
+                </CollectionView.Header>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*,*,*,*" Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                            <Label Text="{Binding Index}" Grid.Column="0" Padding="5"/>
+                            <Label Text="{Binding N}" Grid.Column="1" Padding="5"/>
+                            <Label Text="{Binding Area}" Grid.Column="2" Padding="5"/>
+                            <Label Text="{Binding Error}" Grid.Column="3" Padding="5"/>
+                            <Label Text="{Binding Time}" Grid.Column="4" Padding="5"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </VerticalStackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
