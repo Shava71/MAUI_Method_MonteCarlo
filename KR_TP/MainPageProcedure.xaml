@@ -5,5 +5,115 @@
              x:Class="KR_TP.MainPageProcedure">
     <ContentPage.Content>
         
+         <VerticalStackLayout
+            Spacing="15"
+            Margin="15">
+            
+            <HorizontalStackLayout Spacing="10">
+                
+                <VerticalStackLayout Padding="15">
+                    <!-- Режим ввода -->
+                    <Label x:Name="header" Text="Выберите режим ввода:" />
+                        <RadioButton GroupName="EnterPoint" x:Name="ExampleRadioButton" CheckedChanged="RadioButton_OnCheckedChanged" IsChecked="True" Content="Контрольный пример" />
+                        <RadioButton GroupName="EnterPoint" x:Name="EnterYourselfRadioButton" CheckedChanged="RadioButton_OnCheckedChanged"  Content="Ручной ввод" />
+                        
+                        <!-- Задание точек -->
+                        <Grid Margin="20" Padding="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="1" Text="X" ></Label>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Y" ></Label>
+                            
+                            <Label Grid.Row="1" Grid.Column="0" Text="Точка b"></Label>
+                            <Label Grid.Row="2" Grid.Column="0" Text="Точка d"></Label>
+                            
+                            <Entry  Grid.Row="1" Grid.Column="1" x:Name="b_x" Margin="0,0,0,10"></Entry> 
+                            <Entry Grid.Row="1" Grid.Column="2" x:Name="b_y" Margin="0,0,0,10"></Entry>
+                            <Entry Grid.Row="2" Grid.Column="1" x:Name="d_x" Margin="0,0,0,10"></Entry > 
+                            <Entry Grid.Row="2" Grid.Column="2" x:Name="d_y" Margin="0,0,0,10"></Entry>
+                        </Grid>
+                        
+                        <!-- Кнопки -->
+                        <Grid Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Вычислить" Clicked="ButtonEnter_OnClicked" Margin="0,0,10,0"></Button>
+                            <Button Grid.Column="1" Text="Очистить" Clicked="ButtonClear_OnClicked" Margin="10,0,0,0"></Button>
+                        </Grid>
+                        
+                        <!-- Информация о площади -->
+                        <Grid Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Площадь фигуры: "></Label>
+                            <Label x:Name="RealSquareFigure" Grid.Column="1" Text=""></Label>
+                        </Grid>
+                </VerticalStackLayout>
+                
+                <!-- Рисунок -->
+                <Frame WidthRequest="800" HeightRequest="500" BackgroundColor="Transparent" Padding="0">
+                    <Image 
+                        Source="figure.jpeg"
+                        Aspect="Fill"
+                        SemanticProperties.Description="Рисунок точек задачи" />
+                </Frame>
+                
+            </HorizontalStackLayout>
+            
+            <!-- Таблица -->
+         <CollectionView Margin="20" ItemsSource="{Binding TableDataProcedure}">
+    <CollectionView.Header>
+        <Grid BackgroundColor="LightGray" Padding="5" ColumnSpacing="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/> 
+                <ColumnDefinition Width="220"/> 
+                <ColumnDefinition Width="220"/> 
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="220"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="№" Grid.Column="0" FontAttributes="Bold" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="N" Grid.Column="1" FontAttributes="Bold" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="Площадь" Grid.Column="2" FontAttributes="Bold" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="Погрешность, %" Grid.Column="3" FontAttributes="Bold" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="Время, мс" Grid.Column="4" FontAttributes="Bold" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+    </CollectionView.Header>
+
+    <CollectionView.ItemTemplate>
+        <DataTemplate>
+            <Grid Padding="5" ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/> 
+                    <ColumnDefinition Width="220"/> 
+                    <ColumnDefinition Width="220"/> 
+                    <ColumnDefinition Width="320"/>
+                    <ColumnDefinition Width="220"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{Binding Index}" Grid.Column="0" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding N}" Grid.Column="1" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding Area}" Grid.Column="2" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding Error}" Grid.Column="3" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding Time}" Grid.Column="4" Padding="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
+            
+        </VerticalStackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

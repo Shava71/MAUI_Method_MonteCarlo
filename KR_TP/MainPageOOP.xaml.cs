@@ -77,8 +77,7 @@ public partial class MainPageOOP : ContentPage
                 
                 Points *= 10;
             }
-            (BindingContext as MainPageOOPViewModel)?.Add(new TableRow
-            { });
+         
         }
         catch (FormatException)
         {
@@ -88,5 +87,17 @@ public partial class MainPageOOP : ContentPage
         {
             DisplayAlert("Ошибка", $"Произошла ошибка: {ex.Message}", "OK");
         }
+    }
+
+    private void ButtonClear_OnClicked(object? sender, EventArgs e)
+    {
+        b_x.Text = "";
+        b_y.Text = "";
+        d_x.Text = "";
+        d_y.Text = "";
+
+        RealSquareFigure.Text = "";
+        
+        (BindingContext as MainPageOOPViewModel)?.TableData.Clear();
     }
 }
