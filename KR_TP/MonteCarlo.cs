@@ -8,11 +8,11 @@ public class MonteCarlo
         Random rand = new Random();
         for (int i = 0; i < N; i++)
         {
-            double X = myFigure.RectangleCommon.RightDownCorner.X - rand.NextDouble() * 
-                (myFigure.RectangleCommon.RightDownCorner.X - myFigure.RectangleCommon.LeftUpCorner.X);
+            double X = (double)(myFigure.RectangleCommon.RightDownCorner.X - rand.NextDouble() * 
+                (myFigure.RectangleCommon.RightDownCorner.X - myFigure.RectangleCommon.LeftUpCorner.X));
             
-            double Y = myFigure.RectangleCommon.LeftUpCorner.Y + rand.NextDouble() *
-                (myFigure.RectangleCommon.RightDownCorner.Y - myFigure.RectangleCommon.LeftUpCorner.Y);
+            double Y = (double)(myFigure.RectangleCommon.LeftUpCorner.Y + rand.NextDouble() *
+                (myFigure.RectangleCommon.RightDownCorner.Y - myFigure.RectangleCommon.LeftUpCorner.Y));
             
             MyPoint p = new MyPoint(X,Y);
 

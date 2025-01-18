@@ -2,7 +2,6 @@ namespace KR_TP;
 
 public class MyFigure
 {
-    public MyPoint Points;
     public MyCircle CircleLeftSide;
     public MyCircle CircleRightSide;
     public MyRectangle RectangleCommon;
@@ -12,17 +11,17 @@ public class MyFigure
     {
         RectangleCommon = rectangleCommon;
 
-        double xo_left = RectangleCommon.LeftUpCorner.X;
-        double xo_right = RectangleCommon.RightDownCorner.X;
-        double radius = (RectangleCommon.LeftUpCorner.Y - RectangleCommon.RightDownCorner.Y) / 2;
-        double yo = RectangleCommon.RightDownCorner.Y + radius;
+        double xo_left = (double)RectangleCommon.LeftUpCorner.X;
+        double xo_right = (double)RectangleCommon.RightDownCorner.X;
+        double radius = (double)((RectangleCommon.LeftUpCorner.Y - RectangleCommon.RightDownCorner.Y) / 2);
+        double yo = (double)(RectangleCommon.RightDownCorner.Y + radius);
         // MyPoint o1 = new MyPoint(xo_left, yo);
         // MyPoint o2 = new MyPoint(xo_right, yo);
 
         CircleLeftSide = new MyCircle(xo_left, yo, radius); 
         CircleRightSide = new MyCircle(xo_right, yo, radius);
 
-        RectangleRightSide = new MyRectangle(new Point(RectangleCommon.RightDownCorner.X-radius,yo), RectangleCommon.RightDownCorner);
+        RectangleRightSide = new MyRectangle(new MyPoint((double)(RectangleCommon.RightDownCorner.X-radius),yo), RectangleCommon.RightDownCorner);
     }
     
     // public double RealSquare => RectangleCommon.Square - CircleLeftSide.Square/2 - CircleRightSide.Square/2 - (RectangleRightSide.Square - CircleLeftSide.Square/4);

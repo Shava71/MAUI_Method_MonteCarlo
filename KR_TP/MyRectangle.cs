@@ -2,12 +2,12 @@ namespace KR_TP;
 
 public class MyRectangle
 {
-    public Point LeftUpCorner;
-    public Point RightDownCorner;
+    public MyPoint LeftUpCorner;
+    public MyPoint RightDownCorner;
     
     
 
-    public MyRectangle(Point leftUpCorner, Point rightDownCorner)
+    public MyRectangle(MyPoint leftUpCorner, MyPoint rightDownCorner)
     {
         LeftUpCorner = leftUpCorner;
         RightDownCorner = rightDownCorner;
@@ -18,5 +18,5 @@ public class MyRectangle
         return LeftUpCorner.ToString() + " | " + RightDownCorner.ToString();
     }
 
-    public double Square => (LeftUpCorner.Y - RightDownCorner.Y) * (RightDownCorner.X - LeftUpCorner.X);
+    public double Square => (double)((LeftUpCorner.Y - RightDownCorner.Y) * (RightDownCorner.X - LeftUpCorner.X));
 }

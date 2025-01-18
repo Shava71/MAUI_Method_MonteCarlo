@@ -58,6 +58,11 @@ public partial class MainPageProcedure : ContentPage
             double dx = Convert.ToDouble(d_x.Text);
             double dy = Convert.ToDouble(d_y.Text);
             
+            if (bx > dx || dy > by)
+            {
+                DisplayAlert("Ошибка", "Введите корректные числовые значения для координат.", "OK");
+            }
+            
             double mainRectSquare = (by-dy)*(dx-dy);
             
             double xo_left = bx;

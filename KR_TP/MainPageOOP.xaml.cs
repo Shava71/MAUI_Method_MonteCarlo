@@ -46,9 +46,14 @@ public partial class MainPageOOP : ContentPage
             double dx = Convert.ToDouble(d_x.Text);
             double dy = Convert.ToDouble(d_y.Text);
 
+            if (bx > dx || dy > by)
+            {
+                DisplayAlert("Ошибка", "Введите корректные числовые значения для координат.", "OK");
+            }
+
             MyRectangle rectanglecommon = new MyRectangle(
-                new Point(bx, by),
-                new Point(dx, dy)
+                new MyPoint(bx, by),
+                new MyPoint(dx, dy)
             );
 
             MyFigure myFigure = new MyFigure(rectanglecommon);
